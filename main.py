@@ -1,9 +1,15 @@
 import dlib
+
 import cv2
+from cv2 import CV_32F
+
 import numpy as np
+import argparse
 import os
-import detectingEye as dtt
+import detecting as dtt
 import time
+
+
 
 def main():
     cam = cv2.VideoCapture(0)
@@ -19,6 +25,7 @@ def main():
         gaze.face_detect(frame)
         
         eyePos = gaze.detect_gaze()
+        emotions = gaze.detect_emotion()
         
         _where = ""
         
@@ -30,9 +37,11 @@ def main():
             _where = "center"
         else:
             _where = "None"
+        print(_where)
             
         cv2.putText(frame, _where, (90, 130), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
-        cv2.imshow("justTrackingEye", frame)
+        cv2.putText(frame, emotions, (100,200), cv2.FONT_HERSHEY_DUPLEX, 0.9, (147, 58, 31), 1)
+        cv2.imshow("eyes and emotions", frame)
         if cv2.waitKey(1) == 27:
             break
     cam.release()
