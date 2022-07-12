@@ -10,13 +10,13 @@ from keras.models import load_model
 # from keras.layers import MaxPooling2D
 
 from utils.datasets import get_labels
-from utils.inference import detect_faces
-from utils.inference import draw_text
-from utils.inference import draw_bounding_box
+#from utils.inference import detect_faces
+#from utils.inference import draw_text
+#from utils.inference import draw_bounding_box
 from utils.inference import apply_offsets
-from utils.inference import load_detection_model
+#from utils.inference import load_detection_model
 from utils.preprocessor import preprocess_input
-from statistics import mode
+#from statistics import mode
 
 class Detector():
     path = os.path.dirname(os.path.abspath(__file__))
